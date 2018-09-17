@@ -40,7 +40,7 @@ fetchJSON('https://api.github.com/orgs/HackYourFuture/repos?per_page=100', (erro
         const select = createAndAppend('select', header);
         select.setAttribute('class', 'select_menu');
         const optionItem = createAndAppend('option', select);
-        optionItem.innerText = ' Choose a repository';
+        optionItem.innerText = 'Choose a repository';
 
         for (const obj of arrayOfObjects) {
             const optionItem = createAndAppend('option', select);
@@ -60,10 +60,10 @@ fetchJSON('https://api.github.com/orgs/HackYourFuture/repos?per_page=100', (erro
 
 function repoInfo(error, data) {
     if (error !== null) {
-        console.error(error);
+        alert('error');
+
     } else {
         const repositoryDetails = (data);
-        console.log(repositoryDetails);
         const root = document.getElementById('root');
         const informationContainer = createAndAppend('div', root);
         informationContainer.id = 'repo_information';
@@ -72,26 +72,31 @@ function repoInfo(error, data) {
         const tr1 = createAndAppend('tr', table);
         const th1 = createAndAppend('th', tr1);
         const td1 = createAndAppend('td', tr1);
+
         const pageLink = createAndAppend('a', td1);
         pageLink.innerHTML = repositoryDetails.name;
         pageLink.setAttribute('href', repositoryDetails.svn_url);
         pageLink.setAttribute('target', '_blank');
+
         const tr2 = createAndAppend('tr', table);
         const th2 = createAndAppend('th', tr2);
         const td2 = createAndAppend('td', tr2);
         td2.innerHTML = repositoryDetails.description;
+
         const tr3 = createAndAppend('tr', table);
         const th3 = createAndAppend('th', tr3);
         const td3 = createAndAppend('td', tr3);
-        td3.innerHTML = repositoryDetails.forks;
+        td3.innerHTML = repositoryDetails.forks_count;
         const tr4 = createAndAppend('tr', table);
         const th4 = createAndAppend('th', tr4);
         const td4 = createAndAppend('td', tr4);
+
         th1.innerHTML = 'Repository :';
         th2.innerHTML = 'Description :';
         th3.innerHTML = 'Forks :';
         th4.innerHTML = 'Updated :';
         td4.innerHTML = repositoryDetails.updated_at;
+
         const contributorsUrl = repositoryDetails.contributors_url;
         fetchJSON(contributorsUrl, getContributors);
     }
@@ -99,7 +104,8 @@ function repoInfo(error, data) {
 
 function getContributors(error, data) {
     if (error !== null) {
-        console.error(error);
+        alert('error');
+
     } else {
         const repoData = (data);
         const root = document.getElementById('root');
@@ -107,6 +113,7 @@ function getContributors(error, data) {
         showContributors.setAttribute('id', 'contributors');
         const contributorsHeading = createAndAppend('h2', showContributors);
         contributorsHeading.innerHTML = 'Contributions';
+
         for (const contributor of repoData) {
             const contributorName = createAndAppend('h3', showContributors);
             const contributorLink = createAndAppend('a', contributorName);
