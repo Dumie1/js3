@@ -37,3 +37,9 @@ h1{
 .select_menu{
     margin: 20px;
 }
+#contributors{
+    background: #1e74ff;
+    width: 550px;
+    padding: 40px;
+    margin: 20px;
+}
