@@ -38,8 +38,9 @@ h1{
     margin: 20px;
 }
 #contributors{
-    background: rgba(19, 111, 197, 0.562);
+    background: hsla(209, 94%, 25%, 0.561);
     width: 550px;
     padding: 40px;
     margin: 20px;
+    color: white;
 }
