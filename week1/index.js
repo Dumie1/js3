@@ -35,7 +35,7 @@ fetchJSON('https://api.github.com/orgs/HackYourFuture/repos?per_page=100', (erro
         const header = createAndAppend('div', root);
         header.id = 'subRoot';
         const heading = createAndAppend('h1', header);
-        heading.innerHTML = 'HYF Repositories :';
+        heading.innerHTML = 'HYF Repositories : ';
 
         const select = createAndAppend('select', header);
         select.setAttribute('class', 'select_menu');
