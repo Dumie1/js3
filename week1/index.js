@@ -47,7 +47,8 @@ fetchJSON('https://api.github.com/orgs/HackYourFuture/repos?per_page=100', (erro
             optionItem.innerText = obj.name;
             optionItem.value = 'https://api.github.com/repos/HackYourFuture/' + obj.name;
         }
-        select.addEventListener('change', request => {
+        select.addEventListener('change', event => {
+            event.preventDefault(); // added this line of code plus event parameter on line 50
             const newUrl = event.target.value;
             const root = document.getElementById('root');
 
